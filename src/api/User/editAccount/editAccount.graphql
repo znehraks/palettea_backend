@@ -1,0 +1,9 @@
+type Mutation {
+    editAccount(
+        userName: String
+        email: String!
+        password: String
+        address1: String
+        address2: String
+    ): Boolean!
+}

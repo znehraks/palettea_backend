@@ -1,0 +1,8 @@
+type Mutation {
+  addProduct(
+    productName: String!
+    productCategory: String!
+    productCost: Int!
+    productStock: Int
+  ): Boolean!
+}

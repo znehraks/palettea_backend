@@ -1,0 +1,8 @@
+type Mutation {
+  addCombination(
+    base: String!
+    flavor: String!
+    depth: String!
+    count: Int!
+  ): Combination!
+}

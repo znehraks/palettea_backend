@@ -1,4 +1,73 @@
 type User {
   id: ID! @id
-  name: String!
+  userName: String!
+  email: String! @unique
+  password: String!
+  address1: String
+  address2: String
+  orderList: [Product!] @relation(name: "OrderListOfUser")
+  wishList: [Product!] @relation(name: "WishListOfUser")
+  point: Int! @default(value: 0)
+  isAdmin: Boolean! @default(value: false)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Product {
+  id: ID! @id
+  productName: String! @unique
+  productCategory: String!
+  productCost: Int! @default(value: 0)
+  productCombination: [Combination!] @relation(name: "ProductCombinationOfProduct")
+  productStock: Int! @default(value: 0)
+  productSaleCount: Int! @default(value: 0)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Question {
+  id: ID! @id
+  QuestionTitle: String!
+  QuestionAnswer: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Material {
+  id: ID! @id
+  base: String @unique
+  flavor: String @unique
+  stock: Int! @default(value: 0)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Combination {
+  id: ID! @id
+  base: [Material!] @relation(name: "BaseOfCombination")
+  flavor: [Material!] @relation(name: "FlavorOfCombination")
+  depth: Int!
+  count: Int! @default(value: 0)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Order {
+  id: ID! @id
+  orderAddress: String!
+  orderProduct: [Product!] @relation(name: "OrderProductOfOrder")
+  orderQuestion: [Question] @relation(name: "OrderQuestionOfOrder")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+
+type Consult {
+  id: ID! @id
+  consultCategory: String!
+  consultTitle: String!
+  consultContent: String!
+  consultAnswer: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }

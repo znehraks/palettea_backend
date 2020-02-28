@@ -1,0 +1,71 @@
+type User {
+  id: ID!
+  userName: String!
+  email: String!
+  password: String!
+  address1: String
+  address2: String
+  orderList: [Product!]
+  wishList: [Product!]
+  isAdmin: Boolean!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Product {
+  id: ID!
+  productName: String!
+  productCategory: String!
+  productCost: Int!
+  productCombination: [Combination!]
+  productStock: Int!
+  productSaleCount: Int!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Material {
+  id: ID!
+  base: String
+  flavor: String
+  stock: Int!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Combination {
+  id: ID!
+  base: [Material!]
+  flavor: [Material!]
+  depth: Int!
+  count: Int!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Question {
+  id: ID!
+  QuestionTitle: String!
+  QuestionAnswer: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Order {
+  id: ID!
+  orderAddress: String!
+  orderProduct: [Product!]
+  orderQuestion: [Question]
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Consult {
+  id: ID!
+  consultCategory: String!
+  consultTitle: String!
+  consultContent: String!
+  consultAnswer: String!
+  createdAt: String!
+  updatedAt: String!
+}

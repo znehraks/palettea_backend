@@ -1,0 +1,9 @@
+type Mutation {
+  editProduct(
+    productName: String
+    productCategory: String
+    productCost: Int
+    productStock: Int
+    productSaleCount: Int
+  ): Product!
+}
