@@ -1,3 +1,0 @@
-type Mutation {
-  editFlavor(flavor: String, stock: Int): Boolean!
-}

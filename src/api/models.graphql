@@ -7,6 +7,7 @@ type User {
   address2: String
   orderList: [Product!]
   wishList: [Product!]
+  isSelf: Boolean!
   isAdmin: Boolean!
   createdAt: String!
   updatedAt: String!
@@ -24,10 +25,17 @@ type Product {
   updatedAt: String!
 }
 
-type Material {
+type Base {
   id: ID!
-  base: String
-  flavor: String
+  baseName: String
+  stock: Int!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Flavor {
+  id: ID!
+  flavorName: String
   stock: Int!
   createdAt: String!
   updatedAt: String!
@@ -35,8 +43,9 @@ type Material {
 
 type Combination {
   id: ID!
-  base: [Material!]
-  flavor: [Material!]
+  code: String!
+  base: [Base!]
+  flavor: [Flavor!]
   depth: Int!
   count: Int!
   createdAt: String!
@@ -55,7 +64,7 @@ type Order {
   id: ID!
   orderAddress: String!
   orderProduct: [Product!]
-  orderQuestion: [Question]
+  orderCombination: [Combination!]
   createdAt: String!
   updatedAt: String!
 }

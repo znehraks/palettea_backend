@@ -1,12 +1,16 @@
 # palettea_backend
 
--addMaterial[X]
--editMaterial[X]
--removeMaterial[]
+-addBase[X]
+-editBase[X]
+-removeBase[X]
 
--addCombination[]
--editCombination[]
--removeCombination[]
+-addFlavor[X]
+-editFlavor[X]
+-removeFlavor[X]
+
+-addCombination[X]
+-editCombination[X]
+-removeCombination[X]
 
 -addProduct[]
 -editProduct[]

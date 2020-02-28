@@ -2,10 +2,10 @@ import { prisma } from "../../../../generated/prisma-client";
 
 export default {
   Mutation: {
-    removeCombination: async (_, args, { request, isAdm }) => {
+    removeFlavor: async (_, args, { request, isAdm }) => {
       isAdm(request);
-      const { code } = args;
-      await prisma.deleteCombination({ code });
+      const { flavorName } = args;
+      await prisma.deleteFlavor({ flavorName });
       return true;
     }
   }

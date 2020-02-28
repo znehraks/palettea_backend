@@ -2,25 +2,33 @@ import { prisma } from "../../../../generated/prisma-client";
 
 export default {
   Mutation: {
-    addCombination: async (_, args) => {
-      const { base, flavor, depth, count } = args;
+    addCombination: async (_, args, { request, isAdm }) => {
+      isAdm(request);
+      var { base, flavor, depth } = args;
+      const code = base + flavor + depth;
       const exists = await prisma.$exists.combination({
-        AND: {
-          base_some,
-          flavor_some,
-          depth_some
-        }
+        code
       });
       if (exists) {
-        count + 1;
+        console.log("Already Exist");
+        //count+1 하는 코드
+        return false;
       }
-      const combination = await prisma.createCombination({
-        base,
-        flavor,
+      await prisma.createCombination({
+        base: {
+          connect: {
+            baseName: base
+          }
+        },
+        flavor: {
+          connect: {
+            flavorName: flavor
+          }
+        },
         depth,
-        count
+        code
       });
-      return combination;
+      return true;
     }
   }
 };
