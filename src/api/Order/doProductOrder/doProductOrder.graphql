@@ -1,0 +1,6 @@
+type Mutation {
+  doProductOrder(
+    productCode: String!
+    quantity: Int!
+  ): Boolean!
+}

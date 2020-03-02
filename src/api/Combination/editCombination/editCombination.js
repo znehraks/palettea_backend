@@ -4,7 +4,7 @@ export default {
   Mutation: {
     editCombination: async (_, args, { request, isAdm }) => {
       isAdm(request);
-      var { code, base, flavor, depth } = args;
+      var { combinationCode, base, flavor, depth } = args;
       const newCode = base + flavor + depth;
       const exists = await prisma.$exists.combination({
         code: newCode
@@ -28,7 +28,7 @@ export default {
               }
             },
             depth,
-            code: newCode
+            combinationCode: newCode
           }
         });
         return true;
@@ -45,7 +45,7 @@ export default {
               }
             },
             depth,
-            code: newCode
+            combinationCode: newCode
           }
         });
         return true;
@@ -70,7 +70,7 @@ export default {
               }
             },
             depth,
-            code: newCode
+            combinationCode: newCode
           }
         });
         return true;

@@ -1,8 +1,9 @@
 type Mutation {
   addProduct(
+    productCode: String!
     productName: String!
-    productCategory: String!
+    productCategoryCode: String!
     productCost: Int!
-    productStock: Int
+    productStock: Int!
   ): Boolean!
 }

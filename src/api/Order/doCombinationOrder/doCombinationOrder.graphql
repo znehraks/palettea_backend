@@ -1,0 +1,6 @@
+type Mutation {
+  doCombinationOrder(
+    combinationCode: String!
+    quantity: Int!
+  ): Boolean!
+}

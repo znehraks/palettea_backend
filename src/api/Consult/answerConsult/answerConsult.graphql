@@ -1,0 +1,3 @@
+type Mutation {
+  answerConsult(consultId: String!, consultAnswer: String!): Boolean!
+}

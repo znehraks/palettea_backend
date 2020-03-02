@@ -4,8 +4,8 @@ export default {
   Mutation: {
     removeCombination: async (_, args, { request, isAdm }) => {
       isAdm(request);
-      const { code } = args;
-      await prisma.deleteCombination({ code });
+      const { combinationCode } = args;
+      await prisma.deleteCombination({ combinationCode });
       return true;
     }
   }

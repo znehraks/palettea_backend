@@ -12,17 +12,35 @@
 -editCombination[X]
 -removeCombination[X]
 
--addProduct[]
--editProduct[]
--removeProduct[]
+-addProductCategory[X]
+-editProductCategory[X]
+-removeProductCategory[X]
 
--addQuestion[]
--editQuestion[]
--removeQuestion[]
+-addProduct[X]
+-editProduct[X]
+-removeProduct[X]
 
--doOrder[]
--checkOrder[]
+-addQuestionTitle[X]
+-editQuestionTitle[X]
+removeQuestionTitle[X]
 
--answerConsult[]
--createConsult[]
--deleteConsult[]
+-addQuestionAnswer[X]
+-editQuestionAnswer[X]
+-removeQuestionAnswer[X]
+
+-addQuestion[X]
+-connectAnswer[X]
+-disconnectAnswer[X]
+-removeQuestion[X]
+
+-doCombinationOrder[X]
+-doProductOrder[X]
+
+-statusOrder[X]
+
+-makeConsult[X]
+-answerConsult[X]
+-deleteConsult[X]
+
+-Oauth Login[]
+-AWS[]

@@ -1,0 +1,6 @@
+type Mutation {
+  addQuestionAnswer(
+    questionAnswerCode: String!
+    questionAnswerName: String!
+  ): Boolean!
+}

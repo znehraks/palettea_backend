@@ -1,0 +1,7 @@
+type Mutation {
+  editConsultCategory(
+      consultCategoryCode: String!
+      consultCategoryName: String
+      consultId: String
+  ): Boolean!
+}

@@ -4,7 +4,7 @@ import { prisma } from "../../../../generated/prisma-client";
 export default {
   Mutation: {
     createAccount: async (_, args) => {
-      const { userName, email, password, address1, address2 } = args;
+      const { userName, gender, age, email, password, address1, address2 } = args;
 
       const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -17,6 +17,8 @@ export default {
 
       await prisma.createUser({
         userName,
+        gender,
+        age,
         email,
         password: hashedPassword,
         address1,

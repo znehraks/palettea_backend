@@ -1,16 +1,33 @@
 import { prisma } from "../../../../generated/prisma-client";
-import {isAdm} from "../../../middlewares";
+import { isAdm } from "../../../middlewares";
 
 export default {
   Mutation: {
-    editAccount: async (_, args, { request, isAdm }) => {
-      isAuthenticated(request);
-      const { password, userName, address1, address2} = args;
-      const { user } = request;
-      return prisma.updateUser({
-        where: { email: user.email },
-        data: { password, userName, address1, address2 }
+    editProduct: async (_, args, { request, isAdm }) => {
+      isAdm(request);
+      const {
+        productCode,
+        productName,
+        productCategoryCode,
+        productCost,
+        productStock,
+        productSaleCount
+      } = args;
+      await prisma.updateProduct({
+        where: { productCode },
+        data: {
+          productName,
+          productCategory: {
+            connect: {
+              productCategoryCode
+            }
+          },
+          productCost,
+          productStock,
+          productSaleCount
+        }
       });
+      return true;
     }
   }
 };

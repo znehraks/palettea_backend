@@ -26,7 +26,7 @@ export default {
           }
         },
         depth,
-        code
+        combinationCode: code
       });
       return true;
     }

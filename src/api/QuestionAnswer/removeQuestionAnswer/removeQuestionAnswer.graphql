@@ -1,0 +1,3 @@
+type Mutation {
+  removeQuestionAnswer(questionAnswerCode: String!): Boolean!
+}

@@ -1,0 +1,8 @@
+type Mutation {
+  addQuestion(
+    questionCode: String!
+    questionNumber: Int!
+    questionTitleCode: String!
+    questionAnswerCodes: [String!]!
+  ): Boolean!
+}

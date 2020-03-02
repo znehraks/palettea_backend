@@ -1,0 +1,7 @@
+type Mutation {
+  editProductCategory(
+      productCategoryCode: String!
+      productCategoryName: String
+      productCode: String
+  ): Boolean!
+}

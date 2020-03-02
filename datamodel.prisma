@@ -1,6 +1,8 @@
 type User {
   id: ID! @id
   userName: String!
+  gender: String!
+  age: Int!
   email: String! @unique
   password: String!
   address1: String
@@ -15,8 +17,9 @@ type User {
 
 type Product {
   id: ID! @id
+  productCode: String! @unique
   productName: String! @unique
-  productCategory: String!
+  productCategory: [ProductCategory!]! @relation(name: "ProductCategoryOfProduct")
   productCost: Int! @default(value: 0)
   productCombination: [Combination!] @relation(name: "ProductCombinationOfProduct")
   productStock: Int! @default(value: 0)
@@ -25,10 +28,37 @@ type Product {
   updatedAt: DateTime! @updatedAt
 }
 
+type ProductCategory {
+  id: ID! @id
+  productCategoryCode: String! @unique
+  productCategoryName: String! @unique
+  product: [Product!] @relation(name:"ProductOfProductCategory")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
 type Question {
   id: ID! @id
-  QuestionTitle: String!
-  QuestionAnswer: String!
+  questionCode: String! @unique
+  questionNumber: Int!
+  questionTitle: [QuestionTitle!]! @relation(name:"QuestionTitleOfQuestion")
+  questionAnswer: [QuestionAnswer!]! @relation(name:"QuestionAnswerOfQuestion")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type QuestionTitle {
+  id: ID! @id
+  questionTitleCode: String! @unique
+  questionTitleName: String! @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type QuestionAnswer {
+  id: ID! @id
+  questionAnswerCode: String! @unique
+  questionAnswerName: String! @unique
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -49,7 +79,7 @@ type Flavor {
 
 type Combination {
   id: ID! @id
-  code: String! @unique
+  combinationCode: String! @unique
   base: [Base!]! @relation(name: "BaseOfCombination")
   flavor: [Flavor!]! @relation(name: "FlavorOfCombination")
   depth: Int!
@@ -60,20 +90,30 @@ type Combination {
 
 type Order {
   id: ID! @id
-  orderAddress: String!
+  orderUser: [User!]! @relation(name: "OrderUserOfOrder")
   orderProduct: [Product!] @relation(name: "OrderProductOfOrder")
   orderCombination: [Combination!] @relation(name: "OrderCombinationOfOrder")
+  quantity: Int!
+  status: String! @default(value: "unchecked")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
 
-
 type Consult {
   id: ID! @id
-  consultCategory: String!
+  consultCategory: [ConsultCategory!]! @relation(name: "ConsultCategoryOfConsult")
   consultTitle: String!
   consultContent: String!
-  consultAnswer: String!
+  consultAnswer: String
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type ConsultCategory {
+  id: ID! @id
+  consultCategoryCode: String! @unique
+  consultCategoryName: String! @unique
+  consult: [Consult!] @relation(name: "ConsultCategoryOfConsult")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }

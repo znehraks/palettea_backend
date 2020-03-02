@@ -1,0 +1,6 @@
+type Mutation {
+  addProductCategory(
+    productCategoryCode: String!
+    productCategoryName: String!
+  ): Boolean!
+}

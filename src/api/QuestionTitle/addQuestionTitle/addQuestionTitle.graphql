@@ -1,0 +1,6 @@
+type Mutation {
+  addQuestionTitle(
+    questionTitleCode: String!
+    questionTitleName: String!
+  ): Boolean!
+}

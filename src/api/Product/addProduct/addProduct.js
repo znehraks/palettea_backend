@@ -4,10 +4,21 @@ export default {
   Mutation: {
     addProduct: async (_, args, { request, isAdm }) => {
       isAdm(request);
-      const { productName, productCategory, productCost, productStock } = args;
-      const product = await prisma.createProduct({
+      const {
+        productCode,
         productName,
-        productCategory,
+        productCategoryCode,
+        productCost,
+        productStock
+      } = args;
+      await prisma.createProduct({
+        productCode,
+        productName,
+        productCategory: {
+          connect: {
+            productCategoryCode
+          }
+        },
         productCost,
         productStock
       });

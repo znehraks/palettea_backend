@@ -1,0 +1,7 @@
+type Mutation {
+  makeConsult(
+    consultCategoryCode: String!
+    consultTitle: String!
+    consultContent: String!
+  ): Boolean!
+}

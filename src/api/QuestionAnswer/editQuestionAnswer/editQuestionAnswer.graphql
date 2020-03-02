@@ -1,0 +1,6 @@
+type Mutation {
+  editQuestionAnswer(
+    questionAnswerCode: String!
+    questionAnswerName: String!
+  ): Boolean!
+}

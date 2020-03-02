@@ -1,6 +1,8 @@
 type User {
   id: ID!
   userName: String!
+  gender: String!
+  age: Int!
   email: String!
   password: String!
   address1: String
@@ -15,12 +17,48 @@ type User {
 
 type Product {
   id: ID!
+  productCode: String!
   productName: String!
-  productCategory: String!
+  productCategory: [ProductCategory!]!
   productCost: Int!
   productCombination: [Combination!]
   productStock: Int!
   productSaleCount: Int!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type ProductCategory {
+  id: ID!
+  productCategoryCode: String!
+  productCategoryName: String!
+  product: [Product!]
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Question {
+  id: ID!
+  questionCode: String!
+  questionNumber: Int!
+  questionTitle: [QuestionTitle!]!
+  questionAnswer: [QuestionAnswer!]!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type QuestionTitle {
+  id: ID!
+  questionTitleCode: String!
+  questionTitleName: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type QuestionAnswer {
+  id: ID!
+  questionAnswerCode: String!
+  questionAnswerName: String!
   createdAt: String!
   updatedAt: String!
 }
@@ -43,7 +81,7 @@ type Flavor {
 
 type Combination {
   id: ID!
-  code: String!
+  combinationCode: String!
   base: [Base!]
   flavor: [Flavor!]
   depth: Int!
@@ -52,19 +90,13 @@ type Combination {
   updatedAt: String!
 }
 
-type Question {
-  id: ID!
-  QuestionTitle: String!
-  QuestionAnswer: String!
-  createdAt: String!
-  updatedAt: String!
-}
-
 type Order {
   id: ID!
-  orderAddress: String!
+  orderUser: [User!]!
   orderProduct: [Product!]
   orderCombination: [Combination!]
+  quantity: Int!
+  status: String!
   createdAt: String!
   updatedAt: String!
 }
@@ -75,6 +107,15 @@ type Consult {
   consultTitle: String!
   consultContent: String!
   consultAnswer: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type ConsultCategory {
+  id: ID!
+  consultCategoryCode: String!
+  consultCategoryName: String!
+  consult: [Consult!]
   createdAt: String!
   updatedAt: String!
 }

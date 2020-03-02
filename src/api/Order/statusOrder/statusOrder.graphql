@@ -1,0 +1,3 @@
+type Mutation {
+  statusOrder(orderId: String!, status: String!): Boolean!
+}

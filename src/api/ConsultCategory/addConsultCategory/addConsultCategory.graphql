@@ -1,0 +1,6 @@
+type Mutation {
+  addConsultCategory(
+    consultCategoryCode: String!
+    consultCategoryName: String!
+  ): Boolean!
+}
